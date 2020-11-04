@@ -6,10 +6,10 @@ RUN yum install -y epel-release\
  && yum localinstall -y telegraf-1.2.1.x86_64.rpm\
  && rm telegraf-1.2.1.x86_64.rpm\
  && yum clean all\
- && wget -q https://cern.ch/cmslumisw/installers/linux-64/Brilconda-1.1.7-Linux-x86_64.sh\
+ && wget -q https://cern.ch/cmslumisw/installers/linux-64/Brilconda-3.2.16-Linux-x86_64.sh\
  && mkdir -p /opt\
- && bash ./Brilconda-1.1.7-Linux-x86_64.sh -b -p /opt/brilconda\
- && rm ./Brilconda-1.1.7-Linux-x86_64.sh\
+ && bash ./Brilconda-3.2.16-Linux-x86_64.sh -b -p /opt/brilconda\
+ && rm ./Brilconda-3.2.16-Linux-x86_64.sh\
  && /opt/brilconda/bin/pip install brilws;
 
 EXPOSE 9000
@@ -20,7 +20,7 @@ CMD /start.sh
 
 COPY containerfiles /
 
-RUN git clone https://github.com/jonasdaugalas/brilview.git --branch=1.3.8 &> /dev/null\
+RUN git clone https://github.com/jonasdaugalas/brilview.git --branch=1.3.9 &> /dev/null\
  && cd brilview\
  && /opt/brilconda/bin/python ./setup.py install\
  && chmod 666 /brilview_tmp/brilview_openshift_prod.yaml\
